@@ -1,6 +1,6 @@
 ### Bouncing loader
 
-Tạo ra hoạt ảnh load nảy lên 
+Tạo hiệu ứng đang tải
 
 #### HTML
 
@@ -90,12 +90,12 @@ Tạo ra hoạt ảnh load nảy lên
 
 Lưu ý: `1rem` thường là `16px`.
 
-1. `@keyframes` định nghĩa một animation có 2 trạng thái, chỗ thay đổi `opacity` và dịch chuyển trên không 2D bằng cách `transform: translateY()`.
+1. `@keyframes` định nghĩa một animation có 2 trạng thái, nơi mà các phần tử thay đổi `opacity` và dịch chuyển trong không gian 2D bằng cách `transform: translateY()`.
 
-2. `.bouncing-loader` đây là vùng chính của chấm tròn nảy lên và sử dụng `display: flex`
-  và `justify-content: center` để đặt chúng ở giữa.
+2. `.bouncing-loader` là phần tử mẹ của các vòng tròn xoay và sử dụng `display: flex`, `justify-content: center` để căn
+ chỉnh vị trí của chúng ra giữa
 
-3. `.bouncing-loader > div`, chọn 3 thẻ `div`s để style theo cha nó.  `div`s sẽ có chiều rồng và dài `1rem`, sử dụng `border-radius: 50%` để biến chúng từ hình vuống thành hình tròn.
+3. `.bouncing-loader > div`, mục đích của 3 thẻ `div` con là để style.  `div`s sẽ có chiều rồng và dài `1rem`, sử dụng `border-radius: 50%` để biến chúng từ hình vuống thành hình tròn.
 
 4. `margin: 3rem 0.2rem` chỉ định mỗi chấm tròn cách top/bot `3rem` và left/right 
     `0.2rem` để nó ko chạm vào nhau, cho nó có khoảng cách dễ thở :)).
@@ -264,16 +264,16 @@ Một hình tròn bất cứ khi nào cũng có `width` và `height` phải bằ
 
 #### Giải thích
 
-1. `.clearfix::after` định nghĩa một phần tử giả after.
-2. `content: ''` cho phép phần tử giả ấy ảnh hưởng bố cục.
+1. `.clearfix::after` định nghĩa một phần tử giả.
+2. `content: ''` cho phép phần tử giả tác động đến bố cục.
 3. `clear: both` chỉ ra rằng left/right hoặc cả 2 bên của phần tử kề với trước đó tạo thành đặt trong một khối.
 
 #### Trình duyệt hỗ trợ
 
-<span class="snippet__support-note">⚠️ Để đoạn mã này hoạt động đúng, bạn phải đảm bảo rằng không có phần tử con non-floating trong khối chứa và không có **tall floats** trước khí container clearfixed nhưng trong cùng nội dung định dạng (e.g. floated columns).</span>
+<span class="snippet__support-note">⚠️ Để đoạn mã này hoạt động đúng, bạn phải đảm bảo rằng không có phần tử con non-floating trong khối chứa và không có **tall floats** trước khí container clearfixed nhưng trong cùng nội dung định dạng (ví dụ như các cột đã float).</span>
 
 <!-- tags: layout -->
-### Tỷ lệ vàng width và heigth
+### Cố định tỉ lệ chiều rộng với chiều cao
 
 Phần từ có width, nó sẽ đảm bảo height của nó vẫn tương ứng theo một cách tương ứng
 (i.e., tỉ lệ width và height không thay đổi).
@@ -330,8 +330,8 @@ Thay đổi kích thước trình duyệt của bạn để xem tỉ lệ của 
 
 #### Giải thích
 
-`padding-top` trên `::before` phần tử giả bởi heigth bằng phần trăm width của nó.
- `100%` do đó có nghĩa là height của phần tử luôn luôn bằng `100%` width, tạo ra hình vuông tương ứng.
+`padding-top` trên `::before` phần tử mẫu khiến chiếu cao của phần tử luôn bằng một tỉ lệ với chiều rộng của nó.
+ `100%` do đó có nghĩa là height của phần tử luôn luôn bằng `100%` width, tạo ra một khung responsive tương ứng.
 
 Phương pháp này cũng cho phép content đặt trong phần tử bình thường
 
@@ -503,9 +503,9 @@ Có rất nhiều phần tử giả khác nhau có thể tạo ra thanh cuộn. 
 * https://caniuse.com/#feat=css-scrollbar
 
 <!-- tags: visual -->
-### Custom text selection
+### Tùy chỉnh bộ chọn văn bản
 
-Thay đổi kiểu dáng của lựa chọn văn bản.
+Thay đỏi kiểu của văn bản được chọn.
 
 #### HTML
 
@@ -545,7 +545,7 @@ Thay đổi kiểu dáng của lựa chọn văn bản.
 
 #### Giải thích
 
-`::selection` định nghĩa một bộ chọn giả trên một phần tử để định kiểu văn bản khi được chọn.Lưu ý rằng nếu bạn không kết hợp với bộ chọn nào khác của bạn thì style sẽ được áp đụng ở **document root level**, chọn bất kì phần tử nào.
+`::selection` định nghĩa một bộ chọn giả trên một phần tử để định kiểu văn bản khi được chọn.Lưu ý rằng nếu bạn không kết hợp với bộ chọn nào khác của bạn thì style sẽ được áp đụng ở **document root level** tại mức tài liệu gốc, chọn bất kì phần tử nào.
 
 #### Trình duyệt hỗ trợ
 
@@ -804,19 +804,19 @@ Tạo ra bóng tương tự như `box-shadow` mà dựa trên màu sắc của c
 
 #### Giải thích
 
-Đoạn mã yêu cầu phức tạp về bối cảnh xếp chồng mới có thể, sao cho phần tử giả được đặt dưới phần tử đó trong khi vẫn nhìn thấy được.
+Phần này yêu cầu 1 tập định nghĩa phức tạp để thực hiện đúng, như là phần tử mẫu sẽ được đặt ngay dưới chính nó trong khi vẫn hiện.
 
 1. `position: relative` thiết lập định vị khối cho các phần tử con.
-2. `z-index: 1` thiết lập bối cảnh xếp chồng.
-3. `position: relative` trên thẻ con thiết lập định vị cho các phần tử giả .
+2. `z-index: 1` thiết lập lớp xếp chồng.
+3. `position: relative` ở phần tử con thiết lập dịnh nghĩa vị trí cho phần tử mẫu
 4. `::after` định nghĩa một phần tử giả.
-5. `position: absolute` lấy phần tử giả tách biệt document và định vị nó quan hệ vs cha.
-6. `width: 100%` and `height: 100%`  kích thước phần tử mẫu lấp đầy kích thước cha nó, làm nó cần bằng về kích thước.
-7. `background: inherit` phần tử mẫu thừa kế quy định về góc tuyến tính trên phần tử.
-8. `top: 0.5rem` thêm phần tử giả xuống nhẹ từ cha. 
-9. `filter: blur(0.4rem)` sẽ làm mờ phần tử giả tạo ra sự xuất hiện của bóng bên dưới.
-10. `opacity: 0.7` làm cho phần tử giả trong suốt một phần.
-11. `z-index: -1` định vị phần tự nấp sau phía cha.
+5. `position: absolute` tách phần tử mẫu ra khỏi luồng tài liệu và đặt nó ở vị trí relation với cha nó.
+6. `width: 100%` and `height: 100%` làm kích thước phần tử mẫu lấp đầy kích thước cha nó, làm nó cần bằng về kích thước.
+7. `background: inherit` khiến phần tử mẫu thừa kế quy định về góc tuyến tính trên phần tử.
+8. `top: 0.5rem` làm nhô phần tử mẫu xuống dưới cha nó.
+9. `filter: blur(0.4rem)` sẽ làm mờ phần từ mẫu để tạo bóng phía dưới.
+10. `opacity: 0.7` khiến phần tử mẫu trong suốt 1 phần
+11. `z-index: -1` đặt phần tử mẫu sau cha của nó
 
 #### Trình duyệt hỗ trợ
 
@@ -974,7 +974,7 @@ Tạo ra một hiệu ứng mà chữ xuất hiện sẽ được khắc hoặc 
 
 Nền phải tối hơn bóng để hiệu ứng này hoạt động.
 
-Màu văn bản nên hơi nhạt dần để làm cho nó trông giống như nó được khắc/khắc ra nền.
+Màu của chữ nên bị mờ nhẹ để khiến nó trông như được khắc/chạm xuống nền.
 
 #### Trình duyệt hỗ trợ
 
@@ -1697,4 +1697,3 @@ the `:last-child`.
 * https://caniuse.com/#feat=css-sel3
 
 <!-- tags: visual -->
-
